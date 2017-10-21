@@ -1,7 +1,7 @@
 {
-  "name": "Hello, Blockstack",
+  "name": "Coindex",
   "start_url": "localhost:5000",
-  "description": "A simple demo of Blockstack Auth",
+  "description": "A cryptocurrency portfolio management app",
   "icons": [{
     "src": "https://helloblockstack.com/icon-192x192.png",
     "sizes": "192x192",
