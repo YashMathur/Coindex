@@ -38,6 +38,9 @@ var LoginPage = Backbone.View.extend({
   }
 });
 
+var LoginPage = Backbone.View.extend({
+});  
+
 $(function() {
   var loginPage = new LoginPage();
   loginPage.login();
