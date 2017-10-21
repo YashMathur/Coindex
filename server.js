@@ -21,6 +21,10 @@ app.get('/', function(req, res){
   res.render('index.ejs');
 });
 
+app.get('/dashboard', function(req, res){
+  res.render('dashboard.ejs');
+});
+
 app.listen(process.env.PORT || port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
