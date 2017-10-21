@@ -1,8 +1,8 @@
 var Backbone = require('backbone');
 var blockstack = require('blockstack');
 
-var AppView = Backbone.View.extend({
-  render: function(){
+var LoginPage = Backbone.View.extend({
+  login: function(){
     $('main').click(function() {
       console.log('<h1>Browserify is mathematical.</h1>');
     });
@@ -39,6 +39,6 @@ var AppView = Backbone.View.extend({
 });
 
 $(function() {
-  var appView = new AppView();
-  appView.render();
+  var loginPage = new LoginPage();
+  loginPage.login();
 });
