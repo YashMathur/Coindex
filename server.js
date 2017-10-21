@@ -15,6 +15,7 @@ app.use(allowCrossDomain)
 app.use(express.static(__dirname + '/public'))
 
 app.get('/app.js', browserify('./client/main.js'));
+app.get('/dashboard.js', browserify('./client/dashboard.js'));
 app.get('/style', browserify('./public/'));
 
 app.get('/', function(req, res){
