@@ -1,0 +1,13 @@
+.portfolio{
+    border: solid;
+    border-width: thin;
+    border-radius: 5px;
+  
+    width: 600px;
+}
+
+.portfolio-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
