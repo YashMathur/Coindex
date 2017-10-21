@@ -1,5 +1,6 @@
 var Backbone = require('backbone');
 var blockstack = require('blockstack');
+// const Gdax = require('gdax');
 
 var LoginPage = Backbone.View.extend({
   login: function(){
@@ -38,7 +39,24 @@ var LoginPage = Backbone.View.extend({
   }
 });
 
+// var Graph = Backbone.View.extend({
+//   render: function(){
+//     const websocket = new Gdax.WebsocketClient(['BTC-USD', 'ETH-USD']);
+//     websocket.on('message', data => {
+//       console.log(data);
+//     });
+//     websocket.on('error', err => {
+//       console.log(err);
+//     });
+//     websocket.on('close', () => {
+//       console.log('closed');
+//     });
+//   }
+// });
+
 $(function() {
   var loginPage = new LoginPage();
   loginPage.login();
+  // var graph = new Graph();
+  // graph.render();
 });
