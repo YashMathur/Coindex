@@ -3,6 +3,9 @@ var blockstack = require('blockstack');
 
 var STORAGE_FILE = 'coindex.json';
 
+const ETH = "eth";
+const BIT = "bit";
+
 var LoginPage = Backbone.View.extend({
   login: function(){
     $('main').click(function() {
@@ -48,6 +51,10 @@ var DashboardPage = Backbone.View.extend({
 
     function fetchTransactions(type, address) {
 
+    } 
+    
+    function add(wallet){ 
+      return blockstack.putFile(STORAGE_FILE, wallet);
     }
 
     blockstack.getFile(STORAGE_FILE, true)
@@ -59,6 +66,7 @@ var DashboardPage = Backbone.View.extend({
     wallets = portfolio.wallets;
     if (wallets.length == 0) {
       $(".transaction-container").html('<span>No Recent Transactions</span>');
+      $(".portfolio-item").html('<button> Add </button>');
     } else {
       wallets.forEach(function(type, address) {
         console.log(address);
@@ -66,7 +74,8 @@ var DashboardPage = Backbone.View.extend({
         
       });
     }
-  }
+  },
+
 });
 
 $(function() {
