@@ -1,0 +1,26 @@
+{
+  "name": "Coindex",
+  "version": "1.0.0",
+  "description": "A cryptocurrency portfolio management application",
+  "main": "index.js",
+  "scripts": {
+    "browserify": "browserify requires.js -o public/bundle.js",
+    "start": "npm run browserify; node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yashmathur/coindex.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yashmathur/coindex/issues"
+  },
+  "homepage": "https://github.com/yashmathur/coindex#readme",
+  "dependencies": {
+    "blockstack": "^0.11.0",
+    "browserify": "^14.4.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {}
+}
