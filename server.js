@@ -1,4 +1,5 @@
 const express = require('express')
+var browserify = require('browserify-middleware');
 
 const app = express()
 const port = 5000
@@ -11,7 +12,15 @@ function allowCrossDomain(req, res, next) {
 }
 
 app.use(allowCrossDomain)
-app.use('/', express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/public'))
+
+app.get('/app.js', browserify('./client/main.js'));
+app.get('/style', browserify('./public/'));
+
+app.get('/', function(req, res){
+  res.render('index.ejs');
+});
+
 app.listen(process.env.PORT || port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
