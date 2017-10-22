@@ -14,7 +14,7 @@ var DashboardPage = Backbone.View.extend({
     var portfolio;
     var wallets;
     var transactions = [];
-    var selectedType = BIT;
+    var selectedType = BIT; // By default
 
     $('#addDialog-button').click(function(event) {
       event.preventDefault();
@@ -24,25 +24,28 @@ var DashboardPage = Backbone.View.extend({
     $('#add-wallet-button').click(function(event) {
       event.preventDefault();
       //save the address
+      var newWallet = {"type": selectedType,
+                       "address": document.getElementById('wallet-address').value}
 
-      portfolio.wallets[0].address = document.getElementById('wallet-address').value;
+      portfolio.wallets.push(newWallet);
+      
       // blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
       $('#addDialog').toggle();
     });
 
     $('#bit-type-button').click(function(event) {
       event.preventDefault();
-
+      selectedType = BIT;
     });
 
     $('#eth-type-button').click(function(event) {
       event.preventDefault();
-
+      selectedType = ETH;
     });
 
     $('#ltc-type-button').click(function(event) {
       event.preventDefault();
-
+      selectedType = LTC;
     });
 
     function fetchTransactions(type, address) {
