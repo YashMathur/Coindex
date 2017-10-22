@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="style/app.css">
   <link rel="stylesheet" href="style/dashboard.css">
   <link rel="stylesheet" href="style/portfolio.css">
-  <link rel="stylesheet" href="style/transaction.css">  
+  <link rel="stylesheet" href="style/transaction.css">
 </head>
 
 <body>
@@ -22,23 +22,23 @@
           Logout
         </a>
       </p>
-    </div>  
+    </div>
   </div>
   <div class="sub-header">
     <p> Dashboard </p>
   </div>
-   
+
   <div class="components">
     <!-- Graph goes here -->
-    <div class=graph></div>
-    <div class="portfolio-transaction">
-      <!-- Your Portfolio -->
-      <% include partials/portfolio %>
-      <!-- Recent Activity -->
-      <% include partials/transaction %>
-    </div>
+
+    <!-- Your Portfolio -->
+    <% include partials/portfolio %>
+
+    <% include partials/addDialog %>
+
+    <!-- Recent Activity -->
+    <% include partials/transaction %>
   </div>
-  
-<script src="dashboard.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
