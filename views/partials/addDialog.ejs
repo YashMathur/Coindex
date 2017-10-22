@@ -1,15 +1,21 @@
-<div id="addDialog">
-  <h3>Add Wallet Address</h3>
-  
-  <button type="button" id="btc-type-button">Bitcoin</button>
+<div id="addDialog" class="dialog">
+  <h2>Add New Wallet</h2>
+
+  <!-- <button type="button" id="btc-type-button">Bitcoin</button>
   <button type="button" id="eth-type-button">Ethereum</button>
-  <button type="button" id="ltc-type-button">Litecoin</button>
-  
+  <button type="button" id="ltc-type-button">Litecoin</button> -->
+
   <div class="addDialog">
-    Address:<br>
-    <input type="text" id="wallet-address" placeholder="0x2b38F603fcCF5199970122261359911f30d8aa97"><br>
-    <p>
-      <a href="#" id="add-wallet-button">Add Wallet</a>
-    </p>
+    <div class='radiogroup'>
+      <div><input type='radio' name='crypto' value='Bitcoin' id='fsd' checked/> <label for="fsd">Bitcoin</label></div>
+      <div><input type='radio' name='crypto' value='Ethereum' id='eth'/> <label for='eth'>Ethereum</label></div>
+      <div><input type='radio' name='crypto' value='Litecoin' id='ltc'/> <label for='ltc'>Litecoin</label></div>
+    </div>
+    <div>
+      <input type="text" class="textinput" id="wallet-address" placeholder="Account address"> <button class='button' id="add-wallet-button">Add</button>
+    </div>
   </div>
+</div>
+<div class='overlay'>
+
 </div>

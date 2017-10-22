@@ -3,7 +3,7 @@ var blockstack = require('blockstack');
 
 const https = require("https");
 
-var STORAGE_FILE = 'coindex1.json';
+var STORAGE_FILE = 'coindex2.json';
 
 const ETH = "eth";
 const BTC = "btc";
@@ -12,6 +12,11 @@ const ethScanApiKey = "1W56HIJ9HQDWG3WRRTBANU3K7X3TB96P8Y";
 
 var DashboardPage = Backbone.View.extend({
   display: function(){
+    $('.overlay').on('click', function(){
+      console.log('hello');
+      $(this).hide();
+      $('.dialog').toggle();
+    });
 
     var portfolio = {
       "wallets": [],
@@ -22,8 +27,9 @@ var DashboardPage = Backbone.View.extend({
     var selectedType = BTC; // By default
 
     $('#addDialog-button').click(function(event) {
-      event.preventDefault();
+      console.log('clicked');
       $('#addDialog').toggle();
+      $('.overlay').toggle();
     });
 
     $('#add-wallet-button').click(function(event) {
@@ -40,7 +46,6 @@ var DashboardPage = Backbone.View.extend({
       portfolio.wallets.push(newWallet);
 
       fetchWalletInfo(selectedType, newAddress);
-      $('#addDialog').toggle();
     });
 
     $('#btc-type-button').click(function(event) {
@@ -120,7 +125,9 @@ var DashboardPage = Backbone.View.extend({
           } else {
             portfolio.totalUSD = coinValueUSD;
           }
-          var percent = coinValueUSD*100/portfolio.totalUSD;
+
+          var percent = Math.round(coinValueUSD*100/parseFloat(portfolio.totalUSD));
+          portfolio.totalUSD = parseFloat(portfolio.totalUSD).toFixed(2);
 
           populatePortfolio(type, percent, walletValue, coinValueUSD);
           blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
@@ -169,8 +176,8 @@ var DashboardPage = Backbone.View.extend({
     }
 
     function populateRecentTransactions(date, transText, transVal, transType) {
-      $('[class="transaction-common"]').html('Your recent transactions:');
-      $(".transaction").append(`<div class="transaction-container"> <div class="transaction-common transaction-date-container">${date}</div> <div class="transaction-common transaction-type--graphic">AB</div> <div class="transaction-common transaction-type--text">${transText}</div> <div class="transaction-common transaction-value">${transVal} <span>${transType}</span></div> </div>`);
+      $('[class="transaction-common"]').hide();
+      $(".transaction").append(`<div class="portfolio-item"> <div class="CryptoCurrencyType"  style="flex:0.8">${date}</div> <div class="Percent-of-Portfolio" style="flex:1.2">${transText}</div> <div class="CryptoCurrencyVal" style="flex:1">${parseFloat(transVal).toFixed(2)} <span>${transType}</span></div> </div>`);
     }
 
     function populatePortfolio(type, portPercent, value, usdExch) {
@@ -188,7 +195,7 @@ var DashboardPage = Backbone.View.extend({
           typeName = "Litecoin";
           break;
       }
-      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value} ${type}</div><div class="USD">USD ${usdExch}</div></div>`);
+      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value.toFixed(2)} ${type}</div><div class="USD">USD ${usdExch.toFixed(2)}</div></div>`);
 
       $('.portfolio-total-balance').html(`Total balance: US$${portfolio.totalUSD}`);
     }
@@ -251,7 +258,7 @@ var DashboardPage = Backbone.View.extend({
     wallets = portfolio.wallets;
 
     if (!wallets || wallets.length == 0) {
-      $(".transaction").html('<div class="transaction-common">No Recent Transactions</span>');
+      $(".transaction-message").html('<div class="transaction-common">No Recent Transactions</span>');
 
     } else {
       //
@@ -259,7 +266,7 @@ var DashboardPage = Backbone.View.extend({
       wallets.forEach(function(wallet) {
         // console.log(`address: ${wallet.address}`);
         fetchTransactions(wallet.type, wallet.address);
-        $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${wallet.wallet_name}</div> <div class="Percent-of-Portfolio">59%</div><div class="CryptoCurrencyVal">0.09 BTC</div><div class="USD">USD$760</div></div>`);
+        $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType" style="flex:0.8">${wallet.wallet_name}</div> <div class="Percent-of-Portfolio">59%</div><div class="CryptoCurrencyVal">0.09 BTC</div><div class="USD">USD$760</div></div>`);
       });
     }
   }
