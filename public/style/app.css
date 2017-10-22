@@ -1,12 +1,11 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-
 html {
   margin: 0px;
   height: 100%;
   width: 100%;
+}
+
+h1, h2, h3 {
+  display: inline-block;
 }
 
 body {
