@@ -114,8 +114,6 @@ var DashboardPage = Backbone.View.extend({
           } else {
             portfolio.totalUSD = coinValueUSD;
           }
-          console.log(coinValueUSD + " " + portfolio.totalUSD);
-
           var percent = coinValueUSD*100/portfolio.totalUSD;
 
           populatePortfolio(type, percent, walletValue, coinValueUSD);
@@ -146,10 +144,8 @@ var DashboardPage = Backbone.View.extend({
                   "value": parseFloat(trans.value)*Math.pow(10, -18),
                   "type": ETH
                 };
-                // console.log(singleTransaction);
                 transactions.push(singleTransaction);
               });
-              // console.log(transactions);
               //TODO: Actually sort the transactions by recent date
               transactions.reverse();
               showTransactions();
@@ -252,7 +248,6 @@ var DashboardPage = Backbone.View.extend({
         fetchTransactions(wallet.type, wallet.address);
         $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${wallet.wallet_name}</div> <div class="Percent-of-Portfolio">59%</div><div class="CryptoCurrencyVal">0.09 BTC</div><div class="USD">USD$760</div></div>`);
       });
-      // showTransactions();
     }
   }
 });
