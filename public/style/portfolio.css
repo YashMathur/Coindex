@@ -1,115 +1,126 @@
 .portfolio{
-    border: solid;
-    border-width: thin;
-    border-radius: 4px;
-    border-color: lightgray;
+  border: solid;
+  border-width: thin;
+  border-radius: 4px;
+  border-color: lightgray;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;  
-    align-items: center;
+  /* display: flex; */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
-    width: 49%; 
-    height: 100%; 
+  width: 49%;
+  height: 100%;
 
-    background-color: white; 
+  background-color: white;
+}
+
+.portfolio-transaction-container {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog {
+  display: none;
 }
 
 .Group-Header-portfolioItem{
-    width:100%;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .portfolio-header{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    color: #2164CB;
-    font-size: 14px;
-    font-weight: bold;
-    border-bottom: solid;
-    border-width: thin;
-    border-bottom-color: lightgray;   
-    margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #2164CB;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: solid;
+  border-width: thin;
+  border-bottom-color: lightgray;
+  margin: 0;
 
-    display: flex; 
-    justify-content: space-between;
-    align-items: center; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .portfolio-header p{
-    padding: 10px 6px 10px 6px;
+  padding: 10px 6px 10px 6px;
 }
 
 .portfolio-header button{
-    background-color: white; 
-    border:none;
-    padding: 10px 6px 10px 0px;
-    color: #2164CB;
-    font-size: 14px;
-    font-weight: bold;
+  background-color: white;
+  border:none;
+  padding: 10px 6px 10px 0px;
+  color: #2164CB;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .portfolio-header button:hover{
-    color: grey;
+  color: grey;
 }
 
 .portfolio-item-container{
-    width: 100%; 
-    max-height: 20%;
+  width: 100%;
+  max-height: 20%;
 }
 
 .portfolio-item{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;   
-    
-    padding-top: 1%; 
-    padding-bottom: 1%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
 
-    font-size: 12px;
-    font-weight: bold; 
-    color: #616D7C; 
+  padding-top: 1%;
+  padding-bottom: 1%;
 
-    border-bottom: solid;
-    border-width: thin;
-    border-bottom-color: lightgray;
+  font-size: 12px;
+  font-weight: bold;
+  color: #616D7C;
 
+  border-bottom: solid;
+  border-width: thin;
+  border-bottom-color: lightgray;
 }
 
 .portfolio-item div{
-    padding: 4px 0px 4px 0px; 
+  padding: 4px 0px 4px 0px;
 }
 
-.add{ 
-    width: 100%;
-    padding-top: 1%; 
-    padding-bottom: 1%;
-    font-size: 14px;
+.add{
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  font-size: 14px;
 }
 
-.section-footer{ 
-    width: 100%; 
-    display: flex; 
-    justify-content: center;    
-    padding-top: 1%; 
-    padding-bottom: 1%;
+.section-footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
 
-    color: #A8B8CD; 
-    font-size: 14px; 
+  color: #A8B8CD;
+  font-size: 14px;
 
-    border-top: solid;
-    border-width: thin;
-    border-bottom-color: lightgray;
+  border-top: solid;
+  border-width: thin;
+  border-bottom-color: lightgray;
 }
 
 .bitcoin {
-    
+
 }
 
 .ethereum{

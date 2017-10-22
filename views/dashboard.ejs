@@ -30,14 +30,17 @@
 
   <div class="components">
     <!-- Graph goes here -->
+    <% include partials/chart %>
 
-    <!-- Your Portfolio -->
-    <% include partials/portfolio %>
+    <div class='portfolio-transaction-container'>
+      <!-- Your Portfolio -->
+      <% include partials/portfolio %>
 
-    <% include partials/addDialog %>
+      <% include partials/addDialog %>
 
-    <!-- Recent Activity -->
-    <% include partials/transaction %>
+      <!-- Recent Activity -->
+      <% include partials/transaction %>
+    </div>
   </div>
   <script src="dashboard.js"></script>
 </body>
