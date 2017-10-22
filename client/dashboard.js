@@ -24,11 +24,14 @@ var DashboardPage = Backbone.View.extend({
     $('#add-wallet-button').click(function(event) {
       event.preventDefault();
       //save the address
+      var newAddress = document.getElementById('wallet-address').value;
+
+      //TODO: CHECK UNIQUENESS OF ADDRESS BEFORE ADDING
       var newWallet = {"type": selectedType,
-                       "address": document.getElementById('wallet-address').value}
+                       "address": newAddress}
 
       portfolio.wallets.push(newWallet);
-      
+
       // blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
       $('#addDialog').toggle();
     });
