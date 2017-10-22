@@ -3,7 +3,7 @@ var blockstack = require('blockstack');
 
 const https = require("https");
 
-var STORAGE_FILE = 'coindex.json';
+var STORAGE_FILE = 'coindex1.json';
 
 const ETH = "eth";
 const BTC = "btc";
@@ -12,7 +12,11 @@ const ethScanApiKey = "1W56HIJ9HQDWG3WRRTBANU3K7X3TB96P8Y";
 
 var DashboardPage = Backbone.View.extend({
   display: function(){
-    var portfolio;
+
+    var portfolio = {
+      "wallets": [],
+      "totalUSD": 0
+    };
     var wallets;
     var transactions = [];
     var selectedType = BTC; // By default
@@ -28,13 +32,13 @@ var DashboardPage = Backbone.View.extend({
       var newAddress = document.getElementById('wallet-address').value;
 
       //TODO: CHECK UNIQUENESS OF ADDRESS BEFORE ADDING
-      var newWallet = {"type": selectedType,
-                       "address": newAddress}
+      var newWallet = {
+        "type": selectedType,
+        "address": newAddress
+      };
 
       portfolio.wallets.push(newWallet);
 
-
-      // Fetch wallet info and popluate the Your Portfolio section
       fetchWalletInfo(selectedType, newAddress);
       $('#addDialog').toggle();
     });
@@ -230,11 +234,15 @@ var DashboardPage = Backbone.View.extend({
 
     blockstack.getFile(STORAGE_FILE).then((portfolioJson) => {
       portfolio = JSON.parse(portfolioJson);
+      if (portfolio == null) {
+        portfolio = {
+          "wallets" : []
+        };
+      }
       console.log(portfolio);
       fetchTransactions(portfolio.wallets[0].type, portfolio.wallets[0].address);
       fetchWalletInfo(portfolio.wallets[0].type, portfolio.wallets[0].address);
     });
-
 
     portfolio = {
       "wallets" : []
@@ -259,6 +267,5 @@ var DashboardPage = Backbone.View.extend({
 
 $(function() {
   var dashboardPage = new DashboardPage();
-  dashboardPage.display();
   dashboardPage.display();
 });
