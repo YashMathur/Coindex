@@ -27,14 +27,13 @@
     "crypto": "^1.0.1",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "gdax": "^0.4.2",
-    "jquery": "^3.2.1",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2"
     "fs": "0.0.1-security",
+    "gdax": "^0.4.2",
+    "https": "^1.0.0",
     "jquery": "^3.2.1",
     "json2csv": "^3.11.4",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {}
 }
