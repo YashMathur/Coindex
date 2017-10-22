@@ -16,10 +16,15 @@ app.use(express.static(__dirname + '/public'))
 
 app.get('/app.js', browserify('./client/main.js'));
 app.get('/dashboard.js', browserify('./client/dashboard.js'));
+app.get('/graphs.js', browserify('./client/graphs.js'));
 app.get('/style', browserify('./public/'));
 
 app.get('/', function(req, res){
   res.render('index.ejs');
+});
+
+app.get('/chart', function(req, res){
+  res.render('partials/chart.ejs');
 });
 
 app.get('/dashboard', function(req, res){
