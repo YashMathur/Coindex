@@ -107,7 +107,7 @@ var DashboardPage = Backbone.View.extend({
         res.on('data', (chunk) => {
           data += chunk;
           var p = JSON.parse(data);
-          console.log(p[0]);
+          // console.log(p[0]);
           var priceUSD = p[0].price_usd;
           var coinValueUSD = walletValue*parseFloat(priceUSD);
 
@@ -119,7 +119,7 @@ var DashboardPage = Backbone.View.extend({
           var percent = coinValueUSD*100/portfolio.totalUSD;
 
           populatePortfolio(type, percent, walletValue, coinValueUSD);
-          // blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
+          blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
         });
       });
     }
@@ -184,7 +184,9 @@ var DashboardPage = Backbone.View.extend({
           typeName = "Litecoin";
           break;
       }
-      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value} ${type}</div><div class="USD">USD $${usdExch}</div></div>`);
+      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value} ${type}</div><div class="USD">USD ${usdExch}</div></div>`);
+
+      $('.portfolio-total-balance').html(`Total balance: US$${portfolio.totalUSD}`);
     }
 
     function showTransactions() {
@@ -226,18 +228,14 @@ var DashboardPage = Backbone.View.extend({
       });
     }
 
-    blockstack.getFile(STORAGE_FILE, true)
-              .then((portfolioJson) => {
-                portfolio = JSON.parse(portfolioJson).results[0];
-                console.log(portfolio);
-              });
+    blockstack.getFile(STORAGE_FILE).then((portfolioJson) => {
+      portfolio = JSON.parse(portfolioJson);
+      console.log(portfolio);
+      fetchTransactions(portfolio.wallets[0].type, portfolio.wallets[0].address);
+      fetchWalletInfo(portfolio.wallets[0].type, portfolio.wallets[0].address);
+    });
 
-    //Mock
-    // portfolio = {
-    //   "wallets": [
-    //     {"type": "eth", "address": "0x4d70715d58fdf75be20bfe9596fc92b54c4a2f13"}
-    //   ]
-    // };
+
     portfolio = {
       "wallets" : []
     };
@@ -251,7 +249,7 @@ var DashboardPage = Backbone.View.extend({
       //
       var itemsP = 0;
       wallets.forEach(function(wallet) {
-        console.log(`address: ${wallet.address}`);
+        // console.log(`address: ${wallet.address}`);
         fetchTransactions(wallet.type, wallet.address);
         $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${wallet.wallet_name}</div> <div class="Percent-of-Portfolio">59%</div><div class="CryptoCurrencyVal">0.09 BTC</div><div class="USD">USD$760</div></div>`);
       });
@@ -261,5 +259,6 @@ var DashboardPage = Backbone.View.extend({
 
 $(function() {
   var dashboardPage = new DashboardPage();
+  dashboardPage.display();
   dashboardPage.display();
 });
