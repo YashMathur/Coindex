@@ -12,6 +12,7 @@ const ethScanApiKey = "1W56HIJ9HQDWG3WRRTBANU3K7X3TB96P8Y";
 
 var DashboardPage = Backbone.View.extend({
   display: function(){
+
     $('.overlay').on('click', function(){
       console.log('hello');
       $(this).hide();

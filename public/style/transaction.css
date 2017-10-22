@@ -5,25 +5,21 @@
   border-color: lightgray;
 
   width: 49%;
-  height: 100%;
+  max-height: 210px;
+  overflow: hidden;
+  overflow-y: auto;
 
   background-color: white;
+  padding: 15px; 
 }
 
-.section-header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  color: #2164CB;
-  font-size: 14px;
-  font-weight: bold;
-  border-bottom: solid;
-  border-width: thin;
-  border-bottom-color: lightgray;
-  margin: 0;
+#addDialog{
+  display: none;
 }
 
+.transaction-common h2{
+  color:#326771!important; 
+}
 .section-header p{
     padding: 10px 6px 10px 6px;
 }
@@ -34,22 +30,38 @@
 }
 
 .transaction-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
 
-    padding-top: 1%;
-    padding-bottom: 1%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 
-    font-size: 12px;
-    font-weight: bold;
-    color: #616D7C;
+  font-size: 12px;
+  font-weight: bold;
+  color: #616D7C;
 
-    border-bottom: solid;
-    border-width: thin;
-    border-bottom-color: lightgray;
+  border-bottom: solid;
+  border-width: thin;
+  border-bottom-color: lightgray;
+}
+
+.transaction-date-container {
+  flex: 0.5;    
+}
+
+.transaction-type--graphic{
+  flex: 0.5; 
+}
+
+.transaction-type--text{
+  flex: 1; 
+}
+
+.transaction-value{
+  flex: 1; 
 }
 
 .transaction-container div {
