@@ -1,0 +1,61 @@
+.transaction {
+    border: solid;
+    border-width: thin;
+    border-radius: 4px;
+    border-color: lightgray;
+   
+    width: 49%; 
+    height: 100%; 
+
+    background-color: white;
+}
+
+.section-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  color: #2164CB;
+  font-size: 14px;
+  font-weight: bold;
+  border-bottom: solid;
+  border-width: thin;
+  border-bottom-color: lightgray;   
+  margin: 0;
+}  
+
+.section-header p{
+    padding: 10px 6px 10px 6px;
+}
+
+.transaction-item-container{
+    width:100%; 
+    max-height: 20%; 
+}
+
+.transaction-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;   
+    
+    padding-top: 1%; 
+    padding-bottom: 1%;
+
+    font-size: 12px;
+    font-weight: bold; 
+    color: #616D7C; 
+
+    border-bottom: solid;
+    border-width: thin;
+    border-bottom-color: lightgray;
+}
+
+.transaction-container div {
+    padding: 4px 0px 4px 0px; 
+}    
+    
+  
+
+

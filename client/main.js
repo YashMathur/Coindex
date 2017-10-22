@@ -1,6 +1,11 @@
 var Backbone = require('backbone');
 var blockstack = require('blockstack');
 
+var STORAGE_FILE = 'coindex.json';
+
+const ETH = "eth";
+const BIT = "bit";
+
 var LoginPage = Backbone.View.extend({
   login: function(){
     $('main').click(function() {
@@ -38,10 +43,9 @@ var LoginPage = Backbone.View.extend({
   }
 });
 
-var LoginPage = Backbone.View.extend({
-});  
-
 $(function() {
   var loginPage = new LoginPage();
   loginPage.login();
 });
+
+

@@ -1,43 +1,64 @@
-.transaction {
+.header {
+  background-color: #2164CB; 
+  color: white; 
+  font-size: 12px;
+  
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+}
+
+.header h1{
+  padding: 10px 0px 10px 10px; 
+}
+
+.header .logout{
+  padding-right: 10px;
+}
+
+.header .logout{
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.sub-header{
+  background-color: white; 
+  color: #2164CB; 
+  font-size: 12px;  
+}
+
+.sub-header p{
+  padding: 10px 0px 10px 10px; 
+}
+
+.components{
+  height: 100%; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-around; 
+  align-items: center;  
+  margin: 0; 
+
+}
+
+.graph{
+  width: 80%; 
+  height:50%;
+
   border: solid;
   border-width: thin;
   border-radius: 5px;
 
-  width: 600px;
+  background-color: white; 
 }
 
-.transaction-container {
+.portfolio-transaction{
   display: flex;
   flex-direction: row;
-}
-
-.transaction-common {
-  padding:25px;
-}
-
-.transaction-date-container {
-  width: 25px;
-}
-
-.transaction-type--graphic {
-  width: 25px;
-}
-
-.transaction-type--text {
-  flex-grow: 1;
-  justify-content: flex-start;
-}
-
-.transaction-value {
-  justify-content: flex-end;
-}
-
-.section-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 25px;
-
-  border-bottom: solid;
-  border-width: thin;
-
+  justify-content: space-between; 
+  align-items: center; 
+  
+  width: 80%; 
+  height: 40%; 
 }

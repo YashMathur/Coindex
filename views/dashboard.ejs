@@ -8,29 +8,37 @@
   <title>Coindex</title>
   <link rel="stylesheet" href="style/app.css">
   <link rel="stylesheet" href="style/dashboard.css">
+  <link rel="stylesheet" href="style/portfolio.css">
+  <link rel="stylesheet" href="style/transaction.css">  
 </head>
 
 <body>
   <main role="main"></main>
-  <div>
-    <div>
-      <h1>Dashboard</h1>
-    </div>
-    <div>
+  <div class="header">
+    <h1>Blockstack</h1>
+    <div class="logout">
       <p>
         <a href="#">
           Logout
         </a>
       </p>
-    </div>
-
-    <!-- Graph goes here -->
-    
-    <!-- Your Portfolio -->
-
-    <!-- Recent Activity -->
-    <% include partials/transaction %>
+    </div>  
   </div>
-  <script src="app.js"></script>
+  <div class="sub-header">
+    <p> Dashboard </p>
+  </div>
+   
+  <div class="components">
+    <!-- Graph goes here -->
+    <div class=graph></div>
+    <div class="portfolio-transaction">
+      <!-- Your Portfolio -->
+      <% include partials/portfolio %>
+      <!-- Recent Activity -->
+      <% include partials/transaction %>
+    </div>
+  </div>
+  
+<script src="dashboard.js"></script>
 </body>
 </html>
