@@ -1,5 +1,5 @@
 .header {
-  background-color: #2164CB;
+  background-color: #326771;
   color: white;
   font-size: 12px;
 
@@ -38,8 +38,7 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 0;
-
+  margin-bottom: 30px;
 }
 
 .graph{
@@ -61,4 +60,44 @@
 
   width: 80%;
   height: 40%;
+}
+
+.dialog h2 {
+  margin: 0;
+  margin-bottom: 5px;
+  text-align: center;
+  display: block;
+}
+
+.button {
+  border: 0;
+  color: #FFF;
+  font-weight: bolder;
+  background: #326771;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.radiogroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.addDialog {
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

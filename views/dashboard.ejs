@@ -7,35 +7,29 @@
   <link rel="stylesheet" href="style/dashboard.css">
   <link rel="stylesheet" href="style/portfolio.css">
   <link rel="stylesheet" href="style/transaction.css">
+  <link rel="stylesheet" href="style/chart.css">
 </head>
 
 <body>
   <main role="main"></main>
   <div class="header">
-    <h1>Blockstack</h1>
+    <h1>Coindex</h1>
     <div class="logout">
-      <p>
-        <a href="#">
-          Logout
-        </a>
-      </p>
+      <a href="#">
+        Logout
+      </a>
     </div>
-  </div>
-  <div class="sub-header">
-    <p> Dashboard </p>
   </div>
 
   <div class="components">
-    <!-- Graph goes here -->
+    <div>
     <% include partials/chart %>
+    </div>
 
-    <div class='portfolio-transaction-container'>
-      <!-- Your Portfolio -->
+    <% include partials/addDialog %>
+
+    <div style='display: flex; width: 85%;margin-top:15px;'>
       <% include partials/portfolio %>
-
-      <% include partials/addDialog %>
-
-      <!-- Recent Activity -->
       <% include partials/transaction %>
     </div>
   </div>
