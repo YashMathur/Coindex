@@ -31,8 +31,9 @@ setInterval(function(){
                     console.log(err)
                 })
             }
-            else    
-                fs.appendFile(outputPath,json2csv({data:output, hasCSVColumnTitle: false}), function(err){
+            else
+                var tempout = `, ${json2csv({data:output, hasCSVColumnTitle: false})}`
+                fs.appendFile(outputPath, tempout, function(err){
                     console.log(err)
                 })
           }
