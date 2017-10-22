@@ -4,7 +4,7 @@
   border-radius: 4px;
   border-color: lightgray;
 
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +13,17 @@
   height: 100%;
 
   background-color: white;
+}
+
+.portfolio-transaction-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog {
+  display: none;
 }
 
 .Group-Header-portfolioItem{
