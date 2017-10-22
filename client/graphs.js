@@ -18,17 +18,19 @@ var Graph = Backbone.View.extend({
         body = JSON.parse(body);
 
         for (var i=0;i<5;++i) {
+          var n = parseFloat(body[i].price);
           var obj = {
             name: body[i].long,
             symbol: body[i].short,
-            price: body[i].price,
-            change: body[i].perc
+            price: n.toFixed(2),
+            change: `${body[i].perc.toFixed(2)}%`
           }
           gainers.push(obj);
         }
 
         gainers.forEach(function(gainer) {
-          $(".gainers-container").append(`<div>${gainer.name}(${gainer.symbol}) - ${gainer.price} (${gainer.change})</div>`);
+          var c = gainer.change.indexOf('-') > -1 ? 'red' : '';
+          $(".gainers-container").append(`<div class='gainer'><div class='name-c'><span class='g-name'>${gainer.name}</span><span class='g-sym'>${gainer.symbol}</span></div><div class='price-c'><span class='g-price'>${gainer.price}</span><span class='g-perc ${c}'>${gainer.change}</span></div></div>`);
         });
       });
     });
@@ -81,7 +83,10 @@ var Graph = Backbone.View.extend({
         var options = {
           displayAnnotations: false,
           displayRangeSelector: false,
-          fill: 50
+          fill: 50,
+          width: 700,
+          height: 400,
+          border: 0
         };
 
         chart.draw(data, options);
