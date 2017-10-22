@@ -25,17 +25,15 @@ setInterval(function(){
             var short = data[temp].short
             var price = data[temp].price
             var output = { price: price, date: print}
-            var outputPath = "./data/Current/" + short + ".csv"
+            var outputPath = "./data/" + short + ".csv"
             if (cycle) {
-                fs.appendFile(outputPath,json2csv({data:output,hasCSVColumnTitle: true}), function(err){
-                    console.log(err)
+                fs.appendFile(outputPath,json2csv({data:output,hasCSVColumnTitle: true}) +'\n', function(err){
                 })
             }
-            else
-                var tempout = `, ${json2csv({data:output, hasCSVColumnTitle: false})}`
-                fs.appendFile(outputPath, tempout, function(err){
-                    console.log(err)
+            else{
+                fs.appendFile(outputPath,json2csv({data:output, hasCSVColumnTitle: false}) + '\n', function(err){  
                 })
+            }
           }
           if(cycle){cycle = false}
     })
