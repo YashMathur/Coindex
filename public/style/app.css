@@ -29,3 +29,12 @@ a{
   text-decoration: none;
 }
 
+.login{
+  height: 100vh; 
+  width: 100vw;
+  background-color: #326771;
+}
+
+.logo{
+  background-image: url("/style/logo.png");
+}

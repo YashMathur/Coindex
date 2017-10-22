@@ -169,7 +169,7 @@ var DashboardPage = Backbone.View.extend({
     }
 
     function populateRecentTransactions(date, transText, transVal, transType) {
-      $('[class="transaction-common"]').html('Your recent transactions:');
+      $('[class="transaction-common"]').html('<h2>Your Recent Transactions:</h2>');
       $(".transaction").append(`<div class="transaction-container"> <div class="transaction-common transaction-date-container">${date}</div> <div class="transaction-common transaction-type--graphic">AB</div> <div class="transaction-common transaction-type--text">${transText}</div> <div class="transaction-common transaction-value">${transVal} <span>${transType}</span></div> </div>`);
     }
 
