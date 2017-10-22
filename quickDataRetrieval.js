@@ -18,10 +18,7 @@ setInterval(function(){
           data = data.slice(0,20)
           //console.log(data)
           d = new Date()
-
-          var print = `${d.getMonth()}/${d.getDate()}$/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
           for (temp in data){
-            data[temp].time = print
             var short = data[temp].short
             var price = data[temp].price
             var output = { price: price, date: d}
@@ -37,4 +34,4 @@ setInterval(function(){
           }
           if(cycle){cycle = false}
     })
-}, .5* 1000) 
+}, 5 * 1000) 
