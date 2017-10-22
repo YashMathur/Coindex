@@ -30,7 +30,7 @@ var DashboardPage = Backbone.View.extend({
       //TODO: CHECK UNIQUENESS OF ADDRESS BEFORE ADDING
       var newWallet = {"type": selectedType,
                        "address": newAddress}
-      
+
       portfolio.wallets.push(newWallet);
 
 
@@ -103,7 +103,7 @@ var DashboardPage = Backbone.View.extend({
       var url = `https://api.coinmarketcap.com/v1/ticker/${typeName}/`;
       https.get(url, (res) => {
         let data = '';
-       
+
         res.on('data', (chunk) => {
           data += chunk;
           var p = JSON.parse(data);
@@ -165,6 +165,7 @@ var DashboardPage = Backbone.View.extend({
     }
 
     function populateRecentTransactions(date, transText, transVal, transType) {
+      $('[class="transaction-common"]').html('Your recent transactions:');
       $(".transaction").append(`<div class="transaction-container"> <div class="transaction-common transaction-date-container">${date}</div> <div class="transaction-common transaction-type--graphic">AB</div> <div class="transaction-common transaction-type--text">${transText}</div> <div class="transaction-common transaction-value">${transVal} <span>${transType}</span></div> </div>`);
     }
 
@@ -225,11 +226,11 @@ var DashboardPage = Backbone.View.extend({
       });
     }
 
-    // blockstack.getFile(STORAGE_FILE, true)
-    //           .then((portfolioJson) => {
-    //             portfolio = JSON.parse(portfolioJson).results[0];
-    //             console.log(portfolio);
-    //           });
+    blockstack.getFile(STORAGE_FILE, true)
+              .then((portfolioJson) => {
+                portfolio = JSON.parse(portfolioJson).results[0];
+                console.log(portfolio);
+              });
 
     //Mock
     // portfolio = {
@@ -247,6 +248,7 @@ var DashboardPage = Backbone.View.extend({
       $(".transaction").html('<div class="transaction-common">No Recent Transactions</span>');
 
     } else {
+      //
       var itemsP = 0;
       wallets.forEach(function(wallet) {
         console.log(`address: ${wallet.address}`);
