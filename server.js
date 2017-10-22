@@ -26,6 +26,10 @@ app.get('/chart', function(req, res){
   res.render('partials/chart.ejs');
 });
 
+app.get('/dashboard', function(req, res){
+  res.render('dashboard.ejs');
+});
+
 app.listen(process.env.PORT || port, (err) => {
   if (err) {
     return console.log('something bad happened', err)

@@ -1,0 +1,43 @@
+.transaction {
+  border: solid;
+  border-width: thin;
+  border-radius: 5px;
+
+  width: 600px;
+}
+
+.transaction-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.transaction-common {
+  padding:25px;
+}
+
+.transaction-date-container {
+  width: 25px;
+}
+
+.transaction-type--graphic {
+  width: 25px;
+}
+
+.transaction-type--text {
+  flex-grow: 1;
+  justify-content: flex-start;
+}
+
+.transaction-value {
+  justify-content: flex-end;
+}
+
+.section-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+
+  border-bottom: solid;
+  border-width: thin;
+
+}
