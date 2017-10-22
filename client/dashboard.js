@@ -6,7 +6,7 @@ const https = require("https");
 var STORAGE_FILE = 'coindex.json';
 
 const ETH = "eth";
-const BIT = "bit";
+const BTC = "btc";
 const LTC = "ltc";
 const ethScanApiKey = "1W56HIJ9HQDWG3WRRTBANU3K7X3TB96P8Y";
 
@@ -15,7 +15,7 @@ var DashboardPage = Backbone.View.extend({
     var portfolio;
     var wallets;
     var transactions = [];
-    var selectedType = BIT; // By default
+    var selectedType = BTC; // By default
 
     $('#addDialog-button').click(function(event) {
       event.preventDefault();
@@ -33,15 +33,14 @@ var DashboardPage = Backbone.View.extend({
 
       portfolio.wallets.push(newWallet);
 
-      // blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
       // Fetch wallet info and popluate the Your Portfolio section
       fetchWalletInfo(selectedType, newAddress);
       $('#addDialog').toggle();
     });
 
-    $('#bit-type-button').click(function(event) {
+    $('#btc-type-button').click(function(event) {
       event.preventDefault();
-      selectedType = BIT;
+      selectedType = BTC;
     });
 
     $('#eth-type-button').click(function(event) {
@@ -56,20 +55,36 @@ var DashboardPage = Backbone.View.extend({
 
     function fetchWalletInfo(type, address) {
       var walletValue = "";
+      var typeName = "";
+      var url = "";
+
       switch(type) {
-        case BIT:
+        case BTC:
+          url = `https://blockchain.info/q/addressbalance/${address}`;
+          typeName = "bitcoin";
+          https.get(url, (res) => {
+            let data = '';
+
+            res.on('data', (chunk) => {
+              data += chunk;
+              var p = JSON.parse(data);
+              walletValue = parseFloat(p)*Math.pow(10, -8);
+              getPriceUSD(type, typeName, walletValue);
+            });
+          });
           break;
 
         case ETH:
-          var ethTransUrl = `https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest&apikey=${ethScanApiKey}`;
-          https.get(ethTransUrl, (res) => {
+          url = `https://api.etherscan.io/api?module=account&action=balance&address=${address}&tag=latest&apikey=${ethScanApiKey}`;
+          typeName = "ethereum";
+          https.get(url, (res) => {
             let data = '';
 
             res.on('data', (chunk) => {
               data += chunk;
               var p = JSON.parse(data);
               walletValue = parseFloat(p.result)*Math.pow(10, -18);
-              getPriceUSD(ETH, "ethereum", walletValue);
+              getPriceUSD(type, typeName, walletValue);
             });
           });
           break;
@@ -80,7 +95,6 @@ var DashboardPage = Backbone.View.extend({
         default:
           break;
       }
-
     }
 
     function getPriceUSD (type, typeName, walletValue) {
@@ -105,6 +119,7 @@ var DashboardPage = Backbone.View.extend({
           var percent = coinValueUSD*100/portfolio.totalUSD;
 
           populatePortfolio(type, percent, walletValue, coinValueUSD);
+          // blockstack.putFile(STORAGE_FILE, JSON.stringify(portfolio));
         });
       });
     }
@@ -142,7 +157,7 @@ var DashboardPage = Backbone.View.extend({
           });
           break;
 
-        case BIT:
+        case BTC:
 
           break;
 
@@ -158,7 +173,7 @@ var DashboardPage = Backbone.View.extend({
     function populatePortfolio(type, portPercent, value, usdExch) {
       var typeName = "";
       switch(type) {
-        case BIT:
+        case BTC:
           typeName = "Bitcoin";
           break;
 
@@ -170,7 +185,7 @@ var DashboardPage = Backbone.View.extend({
           typeName = "Litecoin";
           break;
       }
-      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value} ${type}</div><div class="USD">USD$${usdExch}</div></div>`);
+      $(".portfolio-item-container").append(`<div class="portfolio-item">  <div class="CryptoCurrencyType">${typeName}</div> <div class="Percent-of-Portfolio">${portPercent}%</div><div class="CryptoCurrencyVal">${value} ${type}</div><div class="USD">USD $${usdExch}</div></div>`);
     }
 
     function showTransactions() {
@@ -195,9 +210,9 @@ var DashboardPage = Backbone.View.extend({
             transType = "ETH";
             break;
 
-          case BIT:
+          case BTC:
             transText += "Bitcoin";
-            transType = "BIT";
+            transType = "BTC";
             break;
 
           default:

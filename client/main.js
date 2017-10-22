@@ -4,7 +4,7 @@ var blockstack = require('blockstack');
 var STORAGE_FILE = 'coindex.json';
 
 const ETH = "eth";
-const BIT = "bit";
+const BTC = "btc";
 const LTC = "ltc";
 
 var LoginPage = Backbone.View.extend({
