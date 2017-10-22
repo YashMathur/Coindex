@@ -12,10 +12,6 @@ var DashboardPage = Backbone.View.extend({
     var wallets;
     var transactions;
 
-    function fetchTransactions(type, address) {
-
-    }
-
     function add(wallet){
       return blockstack.putFile(STORAGE_FILE, wallet);
     }
@@ -26,17 +22,23 @@ var DashboardPage = Backbone.View.extend({
     });
 
     portfolio = {
-      wallets: ['1', 'fjd']
+      wallets: [
+        {
+          wallet_name: 'bit',
+          address: '0x6764387ryu4r737346847'
+        }
+      ]
     };
 
     wallets = portfolio.wallets;
     if (wallets.length == 0) {
-      $(".transaction-container").html('<span>No Recent Transactions</span>');
       $(".portfolio-item").html('<button> Add </button>');
-    } else {
-      wallets.forEach(function(type, address) {
-        console.log(address);
-        // transactions.push(fetchTransactions(type, address));
+    } 
+    else {
+      wallets.forEach(function(data) {
+        console.log(data);
+        $(".portfolio-item-container").append('<div class="portfolio-item">  <div class="CryptoCurrencyType">'+data.wallet_name+'</div> <div class="Percent-of-Portfolio"> 59% </div><div class="CryptoCurrencyVal">0.09 BTC</div><div class="USD">USD$760</div></div>')
+
 
       });
     }
