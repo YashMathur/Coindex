@@ -23,19 +23,20 @@ var LoginPage = Backbone.View.extend({
       blockstack.signUserOut(window.location.href);
     });
 
-    function showProfile(profile) {
-      var person = new blockstack.Person(profile)
-      $('#heading-name').text(person.name() ? person.name() : "Nameless Person");
-      if(person.avatarUrl()) {
-        $('#avatar-image').attr('src', person.avatarUrl());
-      }
-      $('#section-1').style('display', 'none');
-      $('#section-2').style('display', 'block');
-    }
+    // function showProfile(profile) {
+    //   var person = new blockstack.Person(profile)
+    //   $('#heading-name').text(person.name() ? person.name() : "Nameless Person");
+    //   if(person.avatarUrl()) {
+    //     $('#avatar-image').attr('src', person.avatarUrl());
+    //   }
+    //   $('#section-1').style('display', 'none');
+    //   $('#section-2').style('display', 'block');
+    // }
 
     if (blockstack.isUserSignedIn()) {
-      var profile = blockstack.loadUserData().profile;
-      showProfile(profile);
+      // var profile = blockstack.loadUserData().profile;
+      // showProfile(profile);
+      window.location.href = "/dashboard";
     } else if (blockstack.isSignInPending()) {
       blockstack.handlePendingSignIn().then(function(userData) {
         window.location = window.location.origin;
