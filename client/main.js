@@ -1,6 +1,8 @@
 var Backbone = require('backbone');
 var blockstack = require('blockstack');
 
+const https = require("https");
+
 var STORAGE_FILE = 'coindex.json';
 
 const ETH = "eth";
