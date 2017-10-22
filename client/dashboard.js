@@ -30,8 +30,9 @@ var DashboardPage = Backbone.View.extend({
       //TODO: CHECK UNIQUENESS OF ADDRESS BEFORE ADDING
       var newWallet = {"type": selectedType,
                        "address": newAddress}
-
+      
       portfolio.wallets.push(newWallet);
+
 
       // Fetch wallet info and popluate the Your Portfolio section
       fetchWalletInfo(selectedType, newAddress);
@@ -85,6 +86,7 @@ var DashboardPage = Backbone.View.extend({
               var p = JSON.parse(data);
               walletValue = parseFloat(p.result)*Math.pow(10, -18);
               getPriceUSD(type, typeName, walletValue);
+              fetchTransactions(ETH, address);
             });
           });
           break;
@@ -230,16 +232,19 @@ var DashboardPage = Backbone.View.extend({
     //           });
 
     //Mock
+    // portfolio = {
+    //   "wallets": [
+    //     {"type": "eth", "address": "0x4d70715d58fdf75be20bfe9596fc92b54c4a2f13"}
+    //   ]
+    // };
     portfolio = {
-      "wallets": [
-        {"type": "eth", "address": "0x4d70715d58fdf75be20bfe9596fc92b54c4a2f13"}
-      ]
+      "wallets" : []
     };
 
     wallets = portfolio.wallets;
 
-    if (wallets.length == 0) {
-      $(".transaction-container").html('<div class="transaction-common">No Recent Transactions</span>');
+    if (!wallets || wallets.length == 0) {
+      $(".transaction").html('<div class="transaction-common">No Recent Transactions</span>');
 
     } else {
       var itemsP = 0;
