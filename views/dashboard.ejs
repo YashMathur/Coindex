@@ -25,15 +25,16 @@
   </div>
 
   <div class="components">
-    <!-- Graph goes here -->
-
-    <!-- Your Portfolio -->
-    <% include partials/portfolio %>
+    <div>
+    <% include partials/chart %>
+    </div>
 
     <% include partials/addDialog %>
 
-    <!-- Recent Activity -->
-    <% include partials/transaction %>
+    <div style='display: flex; width: 85%;margin-top:15px;'>
+      <% include partials/portfolio %>
+      <% include partials/transaction %>
+    </div>
   </div>
   <script src="dashboard.js"></script>
 </body>

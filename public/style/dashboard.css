@@ -1,11 +1,6 @@
 .header {
-<<<<<<< HEAD
-  background-color: #2164CB;
-  color: white;
-=======
   background-color: #326771;
   color: white;
->>>>>>> design fixes
   font-size: 12px;
 
   display: flex;
@@ -84,6 +79,7 @@
 }
 
 .overlay {
+  display: none;
   height: 100%;
   width: 100%;
   background: #000;
