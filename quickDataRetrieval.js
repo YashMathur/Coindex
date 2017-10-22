@@ -18,13 +18,13 @@ setInterval(function(){
           data = data.slice(0,20)
           //console.log(data)
           d = new Date()
-          var print = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+
+          var print = `${d.getMonth()}/${d.getDate()}$/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
           for (temp in data){
             data[temp].time = print
-           
             var short = data[temp].short
             var price = data[temp].price
-            var output = { price: price, date: print}
+            var output = { price: price, date: d}
             var outputPath = "./data/" + short + ".csv"
             if (cycle) {
                 fs.appendFile(outputPath,json2csv({data:output,hasCSVColumnTitle: true}) +'\n', function(err){
@@ -37,4 +37,4 @@ setInterval(function(){
           }
           if(cycle){cycle = false}
     })
-}, 1 * 1000) 
+}, .5* 1000) 
